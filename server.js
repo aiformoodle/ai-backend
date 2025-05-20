@@ -25,6 +25,7 @@ app.post('/generate', async (req, res) => {
 
     res.json({ result: completion.data.choices[0].message.content });
   } catch (error) {
+    console.error('OpenAI API error:', error.response?.data || error.message);
     console.error(error);
 res.status(500).json({ result: 'Error generating text. Please check your API key or server logs.' });
   }
